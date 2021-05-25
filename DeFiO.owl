@@ -1,0 +1,150 @@
+@prefix : <https://purl.org/defi-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://purl.org/defi-ontology> .
+
+<https://purl.org/defi-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://purl.org/defi-ontology#hasReason
+:hasReason rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://purl.org/defi-ontology#AbandonedDeadCoin
+:AbandonedDeadCoin rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasReason ;
+                                         owl:someValuesFrom :Abandonment
+                                       ] ;
+                   rdfs:subClassOf :DeadCoin .
+
+
+###  https://purl.org/defi-ontology#Abandonment
+:Abandonment rdf:type owl:Class ;
+             rdfs:subClassOf :CoinDeFunctReason ;
+             rdfs:comment "Lots of the time a project will be a fairly good idea with a few good developers, but the project never manages to get listed onto some main exchanges. So the developers give up and move onto the next project. Lots of the time the money claimed from the ICO, will be returned back to the investors and no harm was done. Other than time lost waiting for the project to come to a end." ;
+             rdfs:label "Abandonment" .
+
+
+###  https://purl.org/defi-ontology#CoinDeFunctReason
+:CoinDeFunctReason rdf:type owl:Class ;
+                   rdfs:label "Coin Defunct Reason" .
+
+
+###  https://purl.org/defi-ontology#DeadCoin
+:DeadCoin rdf:type owl:Class ;
+          rdfs:label "Dead Coin" .
+
+
+###  https://purl.org/defi-ontology#FakePlatform
+:FakePlatform rdf:type owl:Class ;
+              rdfs:subClassOf :CoinDeFunctReason ;
+              rdfs:comment "Make a platform for investors to deposit Crypto into and to make money for the investor. Appears to be well established and legit, by may be a Ponzi Scheme." ;
+              rdfs:label "Fake Platform" .
+
+
+###  https://purl.org/defi-ontology#ICOCashGrab
+:ICOCashGrab rdf:type owl:Class ;
+             rdfs:subClassOf :CoinDeFunctReason ;
+             rdfs:comment """A ICO cash grab is when the project has just been setup to make the developers massive amounts of money and then pawn the project off the the many people invested/involved. Because they have so much invested into the project. Plus people who invest into blockchain related projects are typically well knowledgeable when it comes to coding and development.
+They trick investors by saying things like open source platform or listing fake names. Sometimes even just dropping latest trending blockchain related keyword like Sharding or Sidechain in the future development plans.""" ;
+             rdfs:label "ICO Cash Grab" .
+
+
+###  https://purl.org/defi-ontology#ICODeadCoin
+:ICODeadCoin rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasReason ;
+                                   owl:someValuesFrom :Abandonment
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasReason ;
+                                   owl:someValuesFrom :ICOCashGrab
+                                 ] ;
+             rdfs:subClassOf :DeadCoin ;
+             rdfs:comment "Initial Coin Offerings (ICO) are the high risk/high reward place to invest with over 60% ending up dead coins before they even get a exchange or to the first birthday." ;
+             rdfs:label "ICO Dead Coin" .
+
+
+###  https://purl.org/defi-ontology#ICOScam
+:ICOScam rdf:type owl:Class ;
+         rdfs:subClassOf :ICOCashGrab ;
+         rdfs:comment "ICO Scams are things like pre-mine or Airdrops or fake online wallets. This is similar to the cash grab. But usually more sinister and a planned attack on bad or lazy investors." ;
+         rdfs:label "ICO Scam" .
+
+
+###  https://purl.org/defi-ontology#InadequateAdvertising
+:InadequateAdvertising rdf:type owl:Class ;
+                       rdfs:subClassOf :Abandonment ;
+                       rdfs:comment "Bad advertising or just not enough advertising due to a small budget. So nobody knows about them and the coin or token never gains the traction needed to get listed on main exchanges." ;
+                       rdfs:label "Inadequate Advertising" .
+
+
+###  https://purl.org/defi-ontology#Inexperience
+:Inexperience rdf:type owl:Class ;
+              rdfs:subClassOf :Abandonment ;
+              rdfs:comment "Some tokens are made by very inexperienced people, so the plans/road map just don't get completed. They will have a very small team and a small budget." ;
+              rdfs:label "Inexperience" .
+
+
+###  https://purl.org/defi-ontology#JokeDeadCoin
+:JokeDeadCoin rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReason ;
+                                    owl:someValuesFrom :Abandonment
+                                  ] ;
+              rdfs:subClassOf :DeadCoin ;
+              rdfs:comment "Many of the dead coins are just a big joke, they were made with the intentions of not being the best or greatest currency. Or to just profit off a person name/reputation. Some coins also fall into the scam category due to the fact they used the name to stand out and pump the coin. Then soon after the developer will sell all his coins and abandon the project. This is why most coins are listed as abandoned projects." ;
+              rdfs:label "Joke Dead Coin" .
+
+
+###  https://purl.org/defi-ontology#MassivePreMine
+:MassivePreMine rdf:type owl:Class ;
+                rdfs:subClassOf :CoinDeFunctReason ;
+                rdfs:comment "When you create a coin or token, you can set out how much coins the pubic receive and how much the development team receive. Normally there is about 90-10 or 80-20 ratio so investors will own 90%-80% of the coins and the development team will only have 10%-20%. In some cases the it will be the other way around. Developers will have 90% and investors will only have 10%, this means that there is a limited supply to trade. This can push the price very very high. Till the the developers sell all the coins. Then the coin is worthless." ;
+                rdfs:label "Massive Pre-Mine" .
+
+
+###  https://purl.org/defi-ontology#NoMomentum
+:NoMomentum rdf:type owl:Class ;
+            rdfs:subClassOf :Abandonment ;
+            rdfs:comment "Lots of the time the money claimed from the ICO, will be returned back to the investors and no harm was done. Other than time lost waiting for the project to come to a end." ;
+            rdfs:label "No Momentum" .
+
+
+###  https://purl.org/defi-ontology#PumpAndDump
+:PumpAndDump rdf:type owl:Class ;
+             rdfs:subClassOf :CoinDeFunctReason ;
+             rdfs:comment "Developers have a massive influence on the price of the coin, basically they will say they have problems (security flaw, lost coins) to push the price right down and buy in when the price is rock bottom. Then say they fixed and all these amazing things the. That will push the price up and then the developers will do a massive sell off. They might get away with this a few times then no one wants to trade the coin and it ends up a dead coin." ;
+             rdfs:label "Pump and Dump" .
+
+
+###  https://purl.org/defi-ontology#ScamDeadCoin
+:ScamDeadCoin rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReason ;
+                                    owl:someValuesFrom :FakePlatform
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReason ;
+                                    owl:someValuesFrom :MassivePreMine
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReason ;
+                                    owl:someValuesFrom :PumpAndDump
+                                  ] ;
+              rdfs:subClassOf :DeadCoin ;
+              rdfs:label "Scam Dead Coin" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
