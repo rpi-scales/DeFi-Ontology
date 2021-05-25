@@ -41,7 +41,13 @@
                    rdfs:subClassOf :DeadCoin ;
                    rdfs:label "Abandoned Dead Coin" ;
                    <http://www.w3.org/ns/prov#source> "https://www.coinopsy.com/dead-coins/abandoned/"^^xsd:anyURI ;
-                   :hasReason :Abandonment .
+                   :hasReason :FakePlatform ,
+                              :ICOScam ,
+                              :InadequateAdvertising ,
+                              :Inexperience ,
+                              :MassivePreMine ,
+                              :NoMomentum ,
+                              :PumpAndDump .
 
 
 ###  https://purl.org/defi-ontology#Abandonment
@@ -113,7 +119,8 @@
               rdfs:subClassOf :DeadCoin ;
               rdfs:label "Joke Dead Coin" ;
               <http://www.w3.org/ns/prov#source> "https://www.coinopsy.com/dead-coins/joke-coins/"^^xsd:anyURI ;
-              :hasReason :Abandonment .
+              :hasReason :FakePlatform ,
+                         :PumpAndDump .
 
 
 ###  https://purl.org/defi-ontology#MassivePreMine
