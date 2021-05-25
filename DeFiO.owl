@@ -12,6 +12,10 @@
 #    Annotation properties
 #################################################################
 
+###  http://www.w3.org/ns/prov#source
+<http://www.w3.org/ns/prov#source> rdf:type owl:AnnotationProperty .
+
+
 ###  https://purl.org/defi-ontology#hasReason
 :hasReason rdf:type owl:AnnotationProperty .
 
@@ -36,6 +40,7 @@
                                        ] ;
                    rdfs:subClassOf :DeadCoin ;
                    rdfs:label "Abandoned Dead Coin" ;
+                   <http://www.w3.org/ns/prov#source> "https://www.coinopsy.com/dead-coins/abandoned/"^^xsd:anyURI ;
                    :hasReason :Abandonment .
 
 
@@ -52,7 +57,8 @@
 
 ###  https://purl.org/defi-ontology#DeadCoin
 :DeadCoin rdf:type owl:Class ;
-          rdfs:label "Dead Coin" .
+          rdfs:label "Dead Coin" ;
+          <http://www.w3.org/ns/prov#source> "https://www.coinopsy.com/dead-coins/"^^xsd:anyURI .
 
 
 ###  https://purl.org/defi-ontology#FakePlatform
@@ -69,8 +75,13 @@
 
 ###  https://purl.org/defi-ontology#ICODeadCoin
 :ICODeadCoin rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasReason ;
+                                   owl:someValuesFrom :ICOCashGrab
+                                 ] ;
              rdfs:subClassOf :DeadCoin ;
              rdfs:label "ICO Dead Coin" ;
+             <http://www.w3.org/ns/prov#source> "https://www.coinopsy.com/dead-coins/ico/"^^xsd:anyURI ;
              :hasReason :Abandonment ,
                         :ICOCashGrab .
 
@@ -101,6 +112,7 @@
                                   ] ;
               rdfs:subClassOf :DeadCoin ;
               rdfs:label "Joke Dead Coin" ;
+              <http://www.w3.org/ns/prov#source> "https://www.coinopsy.com/dead-coins/joke-coins/"^^xsd:anyURI ;
               :hasReason :Abandonment .
 
 
@@ -124,8 +136,21 @@
 
 ###  https://purl.org/defi-ontology#ScamDeadCoin
 :ScamDeadCoin rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReason ;
+                                    owl:someValuesFrom :FakePlatform
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReason ;
+                                    owl:someValuesFrom :MassivePreMine
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReason ;
+                                    owl:someValuesFrom :PumpAndDump
+                                  ] ;
               rdfs:subClassOf :DeadCoin ;
               rdfs:label "Scam Dead Coin" ;
+              <http://www.w3.org/ns/prov#source> "https://www.coinopsy.com/dead-coins/scam/"^^xsd:anyURI ;
               :hasReason :FakePlatform ,
                          :MassivePreMine ,
                          :PumpAndDump .
