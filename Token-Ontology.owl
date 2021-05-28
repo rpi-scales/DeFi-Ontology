@@ -185,15 +185,9 @@
 
 ###  http://purl.org/token-ontology.owl#Token
 :Token rdf:type owl:Class ;
-       :hasAttribute :Algorithm ,
-                     :ImageURL ,
-                     :IsTrading ,
-                     :Name ,
-                     :ProofType ,
-                     :Rating ,
-                     :SmartContractAddress ,
-                     :Symbol ,
-                     :URL .
+       :hasAttribute :TokenProperty ;
+       :hasBlockchain :Blockchain ;
+       :hasCoin :Coin .
 
 
 ###  http://purl.org/token-ontology.owl#TokenProperty
