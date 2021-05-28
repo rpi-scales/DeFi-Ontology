@@ -1,0 +1,218 @@
+@prefix : <http://purl.org/token-ontology.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://purl.org/token-ontology.owl> .
+
+<http://purl.org/token-ontology.owl> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/token-ontology.owl#hasAttribute
+:hasAttribute rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/token-ontology.owl#hasBlockchain
+:hasBlockchain rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/token-ontology.owl#hasCoin
+:hasCoin rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/token-ontology.owl#implements
+:implements rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/token-ontology.owl#Algorithm
+:Algorithm rdf:type owl:Class ;
+           rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#Algorithmic
+:Algorithmic rdf:type owl:Class ;
+             rdfs:subClassOf :StableCoin .
+
+
+###  http://purl.org/token-ontology.owl#Asset-collateralized
+:Asset-collateralized rdf:type owl:Class ;
+                      rdfs:subClassOf :StableCoin .
+
+
+###  http://purl.org/token-ontology.owl#Bitcoin
+:Bitcoin rdf:type owl:Class ;
+         rdfs:subClassOf :Coin ;
+         :hasBlockchain :BitcoinBlockchain .
+
+
+###  http://purl.org/token-ontology.owl#BitcoinBlockchain
+:BitcoinBlockchain rdf:type owl:Class ;
+                   rdfs:subClassOf :Blockchain ;
+                   :hasCoin :Bitcoin .
+
+
+###  http://purl.org/token-ontology.owl#Blockchain
+:Blockchain rdf:type owl:Class .
+
+
+###  http://purl.org/token-ontology.owl#Coin
+:Coin rdf:type owl:Class .
+
+
+###  http://purl.org/token-ontology.owl#Crypto-collateralized
+:Crypto-collateralized rdf:type owl:Class ;
+                       rdfs:subClassOf :StableCoin .
+
+
+###  http://purl.org/token-ontology.owl#DeflationarySupply
+:DeflationarySupply rdf:type owl:Class ;
+                    rdfs:subClassOf :Governance .
+
+
+###  http://purl.org/token-ontology.owl#Equity
+:Equity rdf:type owl:Class ;
+        owl:equivalentClass :Security ;
+        rdfs:subClassOf :Fungible .
+
+
+###  http://purl.org/token-ontology.owl#Ether
+:Ether rdf:type owl:Class ;
+       rdfs:subClassOf :Coin ;
+       :hasBlockchain :EthereumBlockchain .
+
+
+###  http://purl.org/token-ontology.owl#EthereumBlockchain
+:EthereumBlockchain rdf:type owl:Class ;
+                    rdfs:subClassOf :Blockchain ;
+                    :hasCoin :Ether .
+
+
+###  http://purl.org/token-ontology.owl#Fiat-collateralized
+:Fiat-collateralized rdf:type owl:Class ;
+                     rdfs:subClassOf :StableCoin .
+
+
+###  http://purl.org/token-ontology.owl#Fungible
+:Fungible rdf:type owl:Class ;
+          rdfs:subClassOf :Token ;
+          :implements "https://eips.ethereum.org/EIPS/eip-20" .
+
+
+###  http://purl.org/token-ontology.owl#Governance
+:Governance rdf:type owl:Class ;
+            rdfs:subClassOf :Fungible .
+
+
+###  http://purl.org/token-ontology.owl#ImageURL
+:ImageURL rdf:type owl:Class ;
+          rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#InflationarySupply
+:InflationarySupply rdf:type owl:Class ;
+                    rdfs:subClassOf :Governance .
+
+
+###  http://purl.org/token-ontology.owl#IsTrading
+:IsTrading rdf:type owl:Class ;
+           rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#MultiToken
+:MultiToken rdf:type owl:Class ;
+            rdfs:subClassOf :Non-Fungible ;
+            :implements "https://eips.ethereum.org/EIPS/eip-1155" .
+
+
+###  http://purl.org/token-ontology.owl#NFT
+:NFT rdf:type owl:Class ;
+     rdfs:subClassOf :Non-Fungible ;
+     :implements "https://eips.ethereum.org/EIPS/eip-721" .
+
+
+###  http://purl.org/token-ontology.owl#Name
+:Name rdf:type owl:Class ;
+      rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#Non-Fungible
+:Non-Fungible rdf:type owl:Class ;
+              rdfs:subClassOf :Token .
+
+
+###  http://purl.org/token-ontology.owl#ProofType
+:ProofType rdf:type owl:Class ;
+           rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#Rating
+:Rating rdf:type owl:Class ;
+        rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#Security
+:Security rdf:type owl:Class ;
+          rdfs:subClassOf :Fungible .
+
+
+###  http://purl.org/token-ontology.owl#SmartContractAddress
+:SmartContractAddress rdf:type owl:Class ;
+                      rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#StableCoin
+:StableCoin rdf:type owl:Class ;
+            rdfs:subClassOf :Transactional .
+
+
+###  http://purl.org/token-ontology.owl#StaticSupply
+:StaticSupply rdf:type owl:Class ;
+              rdfs:subClassOf :Governance .
+
+
+###  http://purl.org/token-ontology.owl#Symbol
+:Symbol rdf:type owl:Class ;
+        rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#Token
+:Token rdf:type owl:Class ;
+       :hasAttribute :Algorithm ,
+                     :ImageURL ,
+                     :IsTrading ,
+                     :Name ,
+                     :ProofType ,
+                     :Rating ,
+                     :SmartContractAddress ,
+                     :Symbol ,
+                     :URL .
+
+
+###  http://purl.org/token-ontology.owl#TokenProperty
+:TokenProperty rdf:type owl:Class .
+
+
+###  http://purl.org/token-ontology.owl#Transactional
+:Transactional rdf:type owl:Class ;
+               rdfs:subClassOf :Token .
+
+
+###  http://purl.org/token-ontology.owl#URL
+:URL rdf:type owl:Class ;
+     rdfs:subClassOf :TokenProperty .
+
+
+###  http://purl.org/token-ontology.owl#Utility
+:Utility rdf:type owl:Class ;
+         rdfs:subClassOf :Fungible .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
